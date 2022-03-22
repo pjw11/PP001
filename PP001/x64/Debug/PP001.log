@@ -1,2 +1,3 @@
-﻿  PP001.cpp
+﻿  PP002.cpp
+C:\Users\pjw\source\repos\PP001\PP001\PP002.cpp(60,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
   PP001.vcxproj -> C:\Users\pjw\source\repos\PP001\x64\Debug\PP001.exe

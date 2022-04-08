@@ -75,7 +75,7 @@ namespace MuSeoum_Engine
 
 			chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
 			
-			string fps = "FPS(seconds) : " + to_string((int)ceil(renderDuration.count()*1000));
+			string fps = "FPS : " + to_string((int)floor(renderDuration.count()*1000));
 			cRenderer.DrawString(fps);
 		}
 		////cout << "Randering speed : " << renderDurationtimePoint.count() << "sec" << endl;

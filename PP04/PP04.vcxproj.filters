@@ -28,7 +28,13 @@
     <ClInclude Include="MGameloop.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MConsolUtill.hpp">
+    <ClInclude Include="MConsolUtil.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="tree.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

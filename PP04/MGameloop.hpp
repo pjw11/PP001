@@ -1,22 +1,28 @@
 #pragma once
-#include <iostream>
 #include <chrono>
 #include <thread>
-#include <Windows.h>
-#include "MConsolUtill.hpp"
+#include "MConsolUtil.hpp"
+#include "Player.hpp"
+#include"tree.hpp"
+#define TREE_BOTTOM_X 45
 
 using namespace std;
 
-namespace MuSeoum_Engine
+namespace MuSeoun_Engine
 {
 	class MGameLoop
 	{
 	private:
 		bool _isGameRunning;
 		MConsoleRenderer cRenderer;
+		chrono::system_clock::time_point startRenderTimePoint;
+		chrono::duration<double> renderDuration;
+		Player p;
+		tree t;
+
 
 	public:
-		MGameLoop()	{ _isGameRunning = false; }
+		MGameLoop() { _isGameRunning = false; }
 		~MGameLoop() {}
 
 		void Run()
@@ -24,64 +30,94 @@ namespace MuSeoum_Engine
 			_isGameRunning = true;
 			Initialize();
 
+			startRenderTimePoint = chrono::system_clock::now();
 			while (_isGameRunning)
 			{
+
 				Input();
 				Update();
 				Render();
 			}
 			Release();
 		}
-
 		void Stop()
 		{
 			_isGameRunning = false;
 		}
 
 	private:
-
-		void Initialize() 
+		void Initialize()
 		{
-			//SetCursorState(false);
-			//p = new Player();
+
 		}
 		void Release()
 		{
-			/*delete(p);*/
 		}
 
 		void Input()
 		{
-			/*if (GetAsyncKeyState(VK_SPACE) == -0x8000 || GetAsyncKeyState(VK_SPACE) == -0x8001)
+			if (GetAsyncKeyState(VK_SPACE) & 0x8000 || GetAsyncKeyState(VK_SPACE) & 0x8001)
 			{
-				p->transform.y = 10;
+				p.isKeyPressed();
 			}
-			else 
+			else
 			{
-				p->transform.y = 15;
-			}*/
-		}
+				p.isKeyUnpressed();
+			}
 
-		void Update() 
-		{
-			
 		}
-		void Render() 
+		void Update()
 		{
-			chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
+			/*t.x -= 2;*/
+			if (t.x != p.x || t.y != p.y)
+			{
+				t.x--;
+			}
+			if (t.x <= 0)
+			{
+				t.x = TREE_BOTTOM_X;
+			}
+
+		}
+		void Render()
+		{
 
 			cRenderer.Clear();
+
+
+			cRenderer.MoveCursor(p.x, p.y);
+			cRenderer.DrawString("P");
+
 			cRenderer.MoveCursor(10, 20);
 
-			chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
-			
-			string fps = "FPS : " + to_string((int)floor(renderDuration.count()*1000));
-			cRenderer.DrawString(fps);
-		}
-		////cout << "Randering speed : " << renderDurationtimePoint.count() << "sec" << endl;
+			cRenderer.MoveCursor(t.x, t.y);
+			cRenderer.DrawString("T");
 
-			//int remainingFrameTime = 100 - (int)(renderDurationtimePoint.count() * 1000.0);
-			//if (remainingFrameTime > 0)
-			//	this_thread::sleep_for(chrono::milliseconds(remainingFrameTime));
+			cRenderer.MoveCursor(20, 10);
+
+			if (p.x == t.x && p.y == t.y)
+			{
+
+				cRenderer.DrawString("gameover");
+			}
+			cRenderer.MoveCursor(10, 20);
+
+
+
+
+			renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+			startRenderTimePoint = chrono::system_clock::now();
+			string fps = "FPS : " + to_string(1.0 / renderDuration.count());
+			cRenderer.DrawString(fps);
+
+			this_thread::sleep_for(chrono::milliseconds(20));
+		}
+		////cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;
+
+		//int remainingFrameTime = 100 - (int)(renderDuration.count() * 1000.0);
+		//if (remainingFrameTime > 0)
+		//	this_thread::sleep_for(chrono::milliseconds(remainingFrameTime));
+
 	};
+
 }

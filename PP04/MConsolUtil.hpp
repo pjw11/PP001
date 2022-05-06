@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace MuSeoum_Engine
+namespace MuSeoun_Engine
 {
 	class MConsoleRenderer
 	{

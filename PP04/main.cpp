@@ -1,8 +1,8 @@
-#include "MGameloop.hpp"
+#include "MGameLoop.hpp"
 
 int main()
 {
-	MuSeoum_Engine::MGameLoop gLoop;
+	MuSeoun_Engine::MGameLoop gLoop;
 	gLoop.Run();
 
 	return 0;

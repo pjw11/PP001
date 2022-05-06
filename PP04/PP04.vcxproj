@@ -142,8 +142,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MConsolUtill.hpp" />
+    <ClInclude Include="MConsolUtil.hpp" />
     <ClInclude Include="MGameloop.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="tree.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

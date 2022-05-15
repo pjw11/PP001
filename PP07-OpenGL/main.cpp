@@ -1,6 +1,7 @@
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
+#pragma comment(lib,"opengl32")
 
 static void error_callback(int error, const char* description)
 {
@@ -18,6 +19,8 @@ int main(void)
     if (!glfwInit())
         exit(EXIT_FAILURE);
     window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
+    //윈도우 매니저한테 윈도우 만들어달라고 함
+    //윈도우라는 객체에 저장
     if (!window)
     {
         glfwTerminate();
@@ -25,7 +28,8 @@ int main(void)
     }
     glfwMakeContextCurrent(window);
     glfwSetKeyCallback(window, key_callback);
-
+    //메세지 핸들러
+    //glfw붙은게 dc사용. 
     while (!glfwWindowShouldClose(window))
     {
         float ratio;
@@ -34,11 +38,34 @@ int main(void)
         ratio = width / (float)height;
 
 
-        //glClearColor(0, 0, 1, 1);
-        //glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.7f, 0.7f, 0.7f, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-        glfwSwapBuffers(window);
-        glfwPollEvents();
+        /*glBegin(GL_POINTS);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex2f(0.0f, 0.0f);
+        glEnd();*/
+
+        glBegin(GL_LINES);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex2f(0.0f, 0.0f);
+        glVertex2f(1.0f, 1.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex2f(0.0f, 0.0f);
+        glVertex2f(1.0f, -1.0f);
+
+        glBegin(GL_TRIANGLES);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex2f(0.0f, 0.0f);
+        glVertex2f(1.0f, 1.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex2f(0.0f, 0.0f);
+        glVertex2f(1.0f, -1.0f);
+        glEnd();
+        //glFlush();
+        //html canvas랑 같음 opengl사용
+        glfwSwapBuffers(window);//버퍼 스왑됨
+        glfwPollEvents(); //키콜백, 에러콜백 중 받은걸로 실행.
     }
     glfwDestroyWindow(window);
     glfwTerminate();

@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include <Windows.h>
 
-#include "MMath.hpp"
-#include "Player.hpp"
 
 #pragma comment(lib, "OpenGL32")
 

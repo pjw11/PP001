@@ -97,7 +97,6 @@ namespace MuSeoun_Engine
 
 			if (p.x == t.x && p.y == t.y)
 			{
-
 				cRenderer.DrawString("gameover");
 			}
 			cRenderer.MoveCursor(10, 20);

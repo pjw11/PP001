@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3f2fe9e9-193d-447c-b6f5-dc4b75a2b1d9}</ProjectGuid>
-    <RootNamespace>PP08</RootNamespace>
+    <ProjectGuid>{64de7a72-994b-4ddc-a4f2-c9fc59db46e9}</ProjectGuid>
+    <RootNamespace>PP08OpenGL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>PP08-OpenGL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PP08.cpp" />
+    <ClCompile Include="PP08-OpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

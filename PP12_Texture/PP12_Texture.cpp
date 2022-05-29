@@ -56,6 +56,7 @@ void init(void)
     BITMAPHEADER originalHeader;	//비트맵의 헤더부분을 파일에서 읽어 저장할 구조체
     int imgSize;			//이미지의 크기를 저장할 변수
     BYTE* image = LoadBitmapFile(&originalHeader, &imgSize, "lena_gray.bmp"); //비트맵파일을 읽어 화소정보를 저장
+    BYTE* image2 = LoadBitmapFile(&originalHeader, &imgSize, "dog.webp");
     if (image == NULL) return;        //파일 읽기에 실패하면 프로그램 종료
 
     //makeCheckImage();
@@ -116,6 +117,16 @@ int main(void)
         glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0, 0.0);
         glTexCoord2f(1.0, 0.0); glVertex3f(1.0, -1.0, 0.0);
         glTexCoord2f(0.5, 1.0); glVertex3f(0.0, 1.0, 0.0);
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glEnable(GL_TEXTURE_2D);
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+        glBindTexture(GL_TEXTURE_2D, texName);
+        glBegin(GL_TRIANGLES);
+        glTexCoord2f(0.0, 0.0); glVertex3f(1.0, 1.0, 0.0);
+        glTexCoord2f(1.0, 0.0); glVertex3f(1.0, -1.0, 0.0);
+        glTexCoord2f(0.5, 1.0); glVertex3f(0.0, 1.0, 0.0);
+
 
         glEnd();
         glFlush();

@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\pjw\source\repos\PP001\202027023_pjw_Game\Player.hpp(13,1): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  코드를 생성하고 있습니다.
+  0 of 15 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  코드를 생성했습니다.
+  202027023_pjw_Game.vcxproj -> C:\Users\pjw\source\repos\PP001\x64\Release\202027023_pjw_Game.exe

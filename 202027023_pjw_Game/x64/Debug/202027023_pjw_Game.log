@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\pjw\source\repos\PP001\202027023_pjw_Game\Player.hpp(13,1): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  202027023_pjw_Game.vcxproj -> C:\Users\pjw\source\repos\PP001\x64\Debug\202027023_pjw_Game.exe
